@@ -15,14 +15,14 @@ const App = () => {
 
     useEffect(() =>{
         dispatch(getPosts());
-    },[dispatch] );
+    },[currentId, dispatch] );
 
 
     return (
         <Container maxWidth='lg'>
             <AppBar className={classes.appBar} position='static' color='inherit'>
                 <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
-                <img className={classes.image} src={memories} alt='memories' height='480'></img>
+                <img className={classes.image} src={memories} alt='memories' height='120'></img>
             </AppBar>
             <Grow in>
                 <Container>
