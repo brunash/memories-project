@@ -8,7 +8,9 @@ const NavBar = () => {
     const classes = useStyles();
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
     console.log(user);
+    
         return (
             <AppBar className={classes.appBar} position='static' color='inherit'>
                 <div className={classes.brandContainer}>
