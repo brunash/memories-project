@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core';
 import { GoogleLogin } from 'react-google-login';
+import { useHistory } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useStyles from './styles'
 import Input from "./Input";
@@ -13,6 +14,7 @@ const Auth = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
     const dispatch = useDispatch();
+    const history = useHistory();
     // const isSignup = true;
 
     const GOOGLE_ID = process.env.GOOGLE_ID;
@@ -38,6 +40,9 @@ const Auth = () => {
         
         try{
             dispatch({ type:'AUTH', data: { result, token }});
+
+            history.push('/');
+
         }catch (error) {
             console.log(error)
         }
