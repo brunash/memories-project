@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AppBar, Avatar, Toolbar, Typography, Button } from '@material-ui/core';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useStyles from './styles';
 import memories from '../../Images/memories.png';
 import { useDispatch } from 'react-redux';
@@ -10,6 +10,7 @@ const NavBar = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
+    const location = useLocation();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     console.log(user);
@@ -19,16 +20,16 @@ const NavBar = () => {
             type: actionType.LOGOUT
         });
 
-        history.push('/auth');
+        history.push('/');
 
         setUser(null);
     };
 
     useEffect(() => {
-        //const token = user?.token;
+        const token = user?.token;
 
         setUser(JSON.parse(localStorage.getItem('profile')));
-    }, []);
+    }, [location]);
     
         return (
             <AppBar className={classes.appBar} position='static' color='inherit'>

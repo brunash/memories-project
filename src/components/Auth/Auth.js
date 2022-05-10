@@ -15,7 +15,6 @@ const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    // const isSignup = true;
 
     const GOOGLE_ID = process.env.GOOGLE_ID;
 
@@ -35,13 +34,13 @@ const Auth = () => {
     }
 
     const googleSuccess = async (res) => {
-        const result = res?.profile.obj;
+        const result = res?.profileObj;
         const token = res?.tokenId;
         
         try{
             dispatch({ type:'AUTH', data: { result, token }});
 
-            history.push('/');
+            history.push('/auth');
 
         }catch (error) {
             console.log(error)
